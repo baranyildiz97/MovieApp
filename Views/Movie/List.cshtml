@@ -1,0 +1,91 @@
+﻿@model IEnumerable<MovieApp.Entity.Movie>
+@{
+    ViewData["Title"] = "List";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+
+<div class="container">
+    <h2>Movie List</h2>
+    <hr />
+    <div>
+        <a class="btn btn-primary" href="/Movie/Create">Create</a>
+    </div>
+
+
+    <div class="row">
+        <div class="col">
+            @if (Model.Count() > 0)
+            {
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Id</th>
+                            <th>Image</th>
+                            <th>Title</th>
+                            <th>Date</th>
+                            <th>isHome</th>
+                            
+                            <th></th>
+                        </tr>
+                    </thead>
+
+
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                        <tr>
+                            <td>@item.MovieId</td>
+                            <td>
+                                <img src="~/images/@item.Image" width="100" />
+                            </td>
+                            <td>@item.Title</td>
+                            <td>@item.MovieDate</td>
+                            <td>
+                           @if (item.isHome)
+
+                             {
+                             <i class="fa fa-check" aria-hidden="true"></i>
+                                   }
+                              else
+                                 {
+                            <i class="fa fa-times" aria-hidden="true"></i>
+                                    }
+                                </td>
+                            
+                                
+
+
+
+
+
+
+
+                                    <td>
+                                        <a class="btn btn-primary btn-sm" asp-controller="Movie" asp-action="Edit" asp-route-id="@item.MovieId">
+                                            Edit
+                                        </a>
+                                        <a class="btn btn-danger btn-sm" asp-controller="Movie" asp-action="Delete" asp-route-id="@item.MovieId">
+                                            Delete
+                                        </a>
+                                    </td>
+
+
+                                </tr>
+                        }
+
+
+
+                    </tbody>
+                </table>
+            }
+            else
+            {
+                <div class="alert alert-danger">
+                    No Movie
+                </div>
+            }
+        </div>
+    </div>
+</div>

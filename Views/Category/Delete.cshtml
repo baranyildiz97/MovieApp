@@ -1,0 +1,18 @@
+﻿@model MovieApp.Entity.Category
+@{
+    ViewData["Title"] = "Delete";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h1>
+    Do you want to delete <b>@Model.Name</b>?
+</h1>
+
+<form asp-controller="Category" asp-action="Delete" method="post">
+    <input type="hidden" asp-for="CategoryId" />
+    <button type="submit" class="btn btn-danger">Delete</button>
+</form>
+
+
+<a href="javascript:history.back()" class="btn btn-primary">Go Back</a>
+

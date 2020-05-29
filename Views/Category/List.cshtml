@@ -1,0 +1,85 @@
+﻿@model IEnumerable<Category>
+@{
+    ViewData["Title"] = "List";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+<div class="container">
+    <div class="row">
+
+        <hr />
+
+        <div>
+            <a class="btn btn-primary" href="/Category/Create">Create Category</a>
+        </div>
+
+
+
+        <div class="col">
+
+            @if (Model.Count() > 0)
+            {
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Id</th>
+                            <th>Name</th>
+                            <th></th>
+                        </tr>
+
+
+
+                    </thead>
+
+
+                    <tbody>
+
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>@item.CategoryId</td>
+                                <td>@item.Name</td>
+                                <td>
+                                    <a class="btn btn-primary btn-sm" asp-controller="Category" asp-action="AddOrUpdate" asp-route-id="@item.CategoryId">
+                                        Details
+                                    </a>
+                                    <a class="btn btn-danger btn-sm" asp-controller="Category" asp-action="Delete" asp-route-id="@item.CategoryId">
+                                        Delete
+                                    </a>
+                                </td>
+
+                            </tr>
+
+
+                        }
+
+                    </tbody>
+
+
+
+                </table>
+
+
+
+
+
+
+            }
+
+            else
+            {
+                <div class="alert alert-danger">
+                    No Category
+                </div>
+            }
+
+        </div>
+
+    </div>
+
+</div>
+
+
+
+

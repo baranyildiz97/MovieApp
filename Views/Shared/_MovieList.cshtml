@@ -1,0 +1,39 @@
+﻿@model IEnumerable<MovieApp.Entity.Movie>
+
+
+@if (Model.Count() == 0)
+{
+
+    <div class="alert alert-warning">No Movie</div>
+
+
+}
+else
+{
+
+    @foreach (var item in Model)
+    {
+        <div class="container">
+            <div class="card mb-2 shadow-sm">
+
+                <img src="~/images/@item.Image" style="width:793px; height:446px; border-radius:2px" />
+                <div class="card-body">
+
+                    <h4 class="card-text">@item.Title</h4>
+                    <div class="d-flex justify-content-between align-items-center">
+                        <div class="btn-group">
+                            <a asp-controller="Movie" asp-action="Details" asp-route-id="@item.MovieId" type="button" class="btn btn-sm btn-outline-secondary">Details</a>
+                            
+                            
+
+                        </div>
+                        <strong style="right:150px">@item.MovieDate</strong>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+    }
+
+}
